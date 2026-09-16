@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impactos da alfabetização tardia | Projeto de pesquisa</title>
+<style>
+:root{
+  --navy:#17324d;
+  --navy2:#214866;
+  --sand:#f3eee5;
+  --cream:#fbfaf7;
+  --ink:#24313a;
+  --muted:#64727c;
+  --line:#dfe4e5;
+  --accent:#d9a86c;
+  --white:#fff;
+  --shadow:0 18px 50px rgba(23,50,77,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65}
+a{color:inherit}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-weight:800;color:var(--navy);letter-spacing:.2px;text-decoration:none;max-width:250px}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:14px}
+.nav-links a{text-decoration:none;color:var(--muted)}
+.nav-links a:hover{color:var(--navy)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:white}
+.lang a{padding:7px 11px;text-decoration:none;font-size:12px;font-weight:800}
+.lang a.active{background:var(--navy);color:white}
+.hero{background:var(--sand);padding:86px 0 92px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800;color:var(--navy2);margin-bottom:18px}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;color:var(--navy);margin:0 0 28px;letter-spacing:-2px}
+.lead{font-size:22px;line-height:1.45;max-width:700px;margin:0 0 32px;color:#43515b}
+.question{font-size:25px;font-weight:700;color:var(--navy);line-height:1.35}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;padding:13px 20px;border-radius:8px;text-decoration:none;font-weight:800;font-size:14px}
+.btn-primary{background:var(--navy);color:white}
+.btn-secondary{border:1px solid var(--navy);color:var(--navy);background:transparent}
+.illustration{min-height:360px;border-radius:24px;background:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.illustration:before{content:"";position:absolute;width:210px;height:210px;border-radius:50%;background:#ead8bd;top:55px;left:50%;transform:translateX(-50%)}
+.illustration:after{content:"";position:absolute;width:250px;height:115px;border-radius:50% 50% 0 0;background:var(--navy);bottom:0;left:50%;transform:translateX(-50%)}
+.book{position:absolute;z-index:3;width:180px;height:100px;background:#fff;border:2px solid var(--navy);left:50%;bottom:78px;transform:translateX(-50%) rotate(-3deg);border-radius:5px;box-shadow:0 8px 15px rgba(0,0,0,.08)}
+.book:after{content:"";position:absolute;left:50%;top:8px;height:80px;border-left:1px solid #ccd4d7}
+section{padding:62px 0}
+.section-head{max-width:760px;margin-bottom:42px}
+.section-head h2{font-size:38px;line-height:1.15;color:var(--navy);margin:0 0 14px}
+.section-head p{font-size:18px;color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:0 8px 28px rgba(23,50,77,.05)}
+.number{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:1px}
+.card h3{color:var(--navy);font-size:21px;margin:12px 0}
+.card p{margin:0;color:var(--muted)}
+.highlight{background:var(--navy);color:white;padding:58px 0}
+.highlight h2{color:white;font-size:40px;max-width:850px;margin:0 0 20px;line-height:1.15}
+.highlight p{max-width:800px;font-size:19px;color:#e8eef2;margin:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{padding:28px 0;border-top:2px solid var(--navy)}
+.step h3{color:var(--navy);margin:0 0 10px;font-size:20px}
+.step p{color:var(--muted);margin:0}
+.criteria{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.criterion{background:white;border:1px solid var(--line);padding:20px;border-radius:12px}
+.criterion strong{color:var(--navy)}
+.cta{background:var(--sand);border-radius:22px;padding:54px}
+.cta h2{color:var(--navy);font-size:38px;margin:0 0 14px}
+.cta p{max-width:760px;color:#4f5d65;font-size:18px}
+.collab{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:35px}
+.collab div{border-left:3px solid var(--accent);padding-left:18px}
+.collab h3{margin:0;color:var(--navy)}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.person{background:white;border:1px solid var(--line);border-radius:16px;padding:26px}
+.person h3{margin:0;color:var(--navy)}
+.person p{color:var(--muted);margin:7px 0 0}
+.contact{display:grid;grid-template-columns:1fr .9fr;gap:45px;align-items:start}
+form{background:white;padding:28px;border:1px solid var(--line);border-radius:16px}
+label{display:block;font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px}
+input,textarea{width:100%;border:1px solid #cfd7da;border-radius:8px;padding:11px;margin-bottom:16px;font:inherit}
+textarea{min-height:130px;resize:vertical}
+footer{background:#12283d;color:#dce5eb;padding:35px 0;font-size:13px}
+footer a{color:white}
+.note{font-size:12px;color:var(--muted);margin-top:14px}
+
+/* EASY CUSTOMISATION */
+.recruitment-banner{background:#e9f2f5;border:1px solid #d4e4ea;border-radius:18px;padding:22px 28px;margin:0 auto 42px;display:flex;align-items:center;gap:20px}
+.recruitment-banner .recruitment-icon{width:48px;height:48px;min-width:48px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-size:22px}
+.recruitment-banner strong{display:block;color:var(--navy);font-size:19px;margin-bottom:3px}.recruitment-banner span{color:#4f5d65;font-size:16px}
+.abstract-visual{margin:0 auto 46px;width:min(570px,100%);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:white}.abstract-visual img{display:block;width:100%;height:auto}
+.video-section{background:#eaf3f6;border-radius:22px;padding:36px;margin:0 auto 48px}.video-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:38px;align-items:center}.video-label{text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:800;color:var(--navy2);margin-bottom:12px}.video-section h2{color:var(--navy);font-size:32px;line-height:1.15;margin:0 0 14px}.video-section p{color:var(--muted);margin:0}.video-embed{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#17324d;box-shadow:0 10px 30px rgba(23,50,77,.15)}.video-embed iframe{display:block;width:100%;height:100%;border:0}
+.participant-title{font-size:44px!important}.compensation{margin-top:24px;padding:18px 22px;border-left:4px solid var(--accent);background:white;border-radius:0 10px 10px 0;color:#4f5d65}.compensation strong{color:var(--navy)}
+@media(max-width:800px){.recruitment-banner{padding:18px 20px}.video-section{padding:28px 22px}.video-grid{grid-template-columns:1fr;gap:24px}.participant-title{font-size:34px!important}}
+
+@media(max-width:800px){
+  .nav-links{display:none}
+  .hero-grid,.contact,.team{grid-template-columns:1fr}
+  .cards,.steps,.collab,.criteria{grid-template-columns:1fr}
+  .hero{padding:60px 0}
+  section{padding:48px 0}
+  .cta{padding:35px 25px}
+  h1{letter-spacing:-1px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#top">Os impactos da alfabetização tardia</a>
+    <div class="nav-links">
+      <a href="#pesquisa">Pesquisa</a>
+      <a href="#participantes">Posso participar?</a>
+      <a href="#eja">Para instituições de EJA</a>
+      <a href="#equipe">Nossa equipe</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="lang">
+      <a class="active" href="index_pt_br.html">PT</a>
+      <a href="en_with_youtube_embed.html">EN</a>
+    </div>
+  </div>
+</nav>
+
+
+<section aria-label="Recrutamento de participantes" style="padding:0;">
+  <div class="container">
+    <div class="recruitment-banner">
+      <div class="recruitment-icon">👥</div>
+      <div><strong>Estamos recrutando participantes!</strong><span>Se você acredita que atende aos critérios do estudo, confira os requisitos abaixo e fale conosco.<br>O recrutamento está aberto e deverá continuar até aproximadamente meados de 2028.</span></div>
+    </div>
+  </div>
+</section>
+
+<main id="top">
+<section class="hero">
+<div class="container hero-grid">
+  <div>
+    <div class="eyebrow">Projeto de pesquisa</div>
+    <h1>Os impactos da alfabetização tardia</h1>
+    <p class="lead">O que acontece quando uma pessoa aprende a ler depois da infância?</p>
+    <p class="question">Pessoas que aprendem a ler mais tarde na vida podem atingir o mesmo nível de proficiência em leitura de quem foi alfabetizado na infância?</p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="#participantes">Quero participar</a>
+      <a class="btn btn-secondary" href="#eja">Trabalho em uma instituição de EJA</a>
+    </div>
+  </div>
+  <div class="illustration" aria-label="Ilustração abstrata relacionada à leitura">
+    <div class="book"></div>
+  </div>
+</div>
+</section>
+
+<section id="pesquisa">
+<div class="container">
+  <div class="section-head">
+    <h2>Por que este tema é tão importante?</h2>
+    <p>Aprender a ler transforma o cérebro. No entanto, ainda sabemos muito pouco sobre os limites dessa adaptação quando a alfabetização ocorre mais tarde na vida.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="number">01</div><h3>O cérebro</h3><p>Aprender a ler provoca mudanças profundas na forma como o cérebro processa informações visuais, incluindo o reconhecimento de objetos e a linguagem.</p></div>
+    <div class="card"><div class="number">02</div><h3>A idade de aquisição da leitura</h3><p>A idade em que aprendemos a ler pode influenciar o desenvolvimento das habilidades de leitura.</p></div>
+    <div class="card"><div class="number">03</div><h3>Até onde as pessoas podem chegar?</h3><p>Pessoas que aprendem a ler mais tarde na vida podem nos ajudar a compreender melhor a capacidade de adaptação do cérebro.</p></div>
+  </div>
+</div>
+</section>
+
+<section aria-label="Ilustração sobre leitura e cérebro" style="padding-top:0;padding-bottom:10px;">
+  <div class="container"><div class="abstract-visual"><img src="brain_lang.png" alt="Ilustração abstrata relacionada à leitura e ao cérebro"></div></div>
+</section>
+
+<section class="highlight">
+<div class="container">
+  <h2>Uma questão em aberto</h2>
+  <p>Sabemos que é possível se alfabetizar mais tarde na vida. A questão é se, depois de aprender a ler, uma pessoa que começou mais tarde pode desenvolver uma proficiência em leitura tão eficiente quanto a de quem foi alfabetizado na infância.</p>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head">
+    <h2>Como funciona a participação no estudo?</h2>
+    <p>A participação é individual, realizada presencialmente na Universidade Federal do Ceará e tem duração aproximada de duas horas.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><h3>01 · Proficiência em leitura</h3><p>Você realizará tarefas que nos ajudarão a avaliar diferentes aspectos da leitura em português brasileiro.</p></div>
+    <div class="step"><h3>02 · Raciocínio não verbal</h3><p>Você realizará um teste de raciocínio não verbal.</p></div>
+    <div class="step"><h3>03 · Rastreamento ocular</h3><p>Usaremos um equipamento de rastreamento ocular para acompanhar os movimentos dos seus olhos durante a leitura. Trata-se de uma câmera posicionada à sua frente, sem qualquer contato físico. Você só precisa ler!</p></div>
+  </div>
+</div>
+</section>
+
+<section id="participantes" style="background:#f5f6f4">
+<div class="container">
+  <div class="section-head">
+    <h2 class="participant-title">Quem pode participar?</h2>
+    <p>Buscamos adultos com diferentes trajetórias de escolarização e alfabetização.</p>
+  </div>
+  <div class="criteria">
+    <div class="criterion">✓ <strong>Ter 18 anos ou mais</strong></div>
+    <div class="criterion">✓ <strong>Ter o português brasileiro como primeira língua</strong></div>
+    <div class="criterion">✓ <strong>Ter tido pouca ou nenhuma escolarização formal durante a infância</strong></div>
+    <div class="criterion">✓ <strong>Ter aprendido a ler mais tarde do que o habitual</strong></div>
+    <div class="criterion">✓ <strong>Ter concluído o Ensino Médio</strong></div>
+  </div>
+      <div class="compensation"><strong>Participação e compensação financeira.</strong><br>Após uma breve entrevista, as pessoas que atenderem aos critérios e concluírem o estudo receberão uma compensação financeira pela participação.</div>
+</div>
+</section>
+
+<section aria-label="Vídeo do projeto">
+  <div class="container"><div class="video-section"><div class="video-grid">
+    <div><div class="video-label">Assista à apresentação do projeto</div><h2>Conheça melhor o projeto</h2><p>Assista a um breve vídeo para conhecer melhor a pesquisa, seus objetivos e a importância deste tema.</p></div>
+    <div class="video-embed"><iframe width="560" height="315" src="https://www.youtube.com/embed/0Y2pPii4ISw?si=mqpQrBd4WfdjYMdP" title="Reprodutor de vídeo do YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+  </div></div></div>
+</section>
+
+<section id="eja">
+<div class="container">
+  <div class="cta">
+    <h2>Para instituições de EJA</h2>
+    <p>A colaboração de escolas, centros e profissionais da EJA é fundamental para que possamos alcançar pessoas com diferentes trajetórias de alfabetização. Ao divulgar este projeto, sua instituição pode contribuir diretamente para a pesquisa.</p>
+    <div class="collab">
+      <div><h3>Identificar</h3><p>Ajude-nos a chegar a estudantes e ex-estudantes que possam se encaixar no perfil da pesquisa.</p></div>
+      <div><h3>Divulgar</h3><p>Compartilhe informações sobre o estudo com a sua comunidade.</p></div>
+      <div><h3>Encaminhar</h3><p>Oriente as pessoas interessadas a entrar em contato diretamente com a equipe de pesquisa.</p></div>
+    </div>
+    <div class="buttons"><a class="btn btn-primary" href="#contato">Quero colaborar</a></div>
+  </div>
+</div>
+</section>
+
+<section id="equipe">
+<div class="container">
+  <div class="section-head"><h2>Equipe e financiamento</h2><p>Este projeto é uma colaboração entre pesquisadores da University of Southampton, no Reino Unido, e da Universidade Federal do Ceará, no Brasil.</p></div>
+  <div class="team">
+    <div class="person"><h3>Dr. João Vieira</h3><p>Pesquisador de pós-doutorado · University of Southampton</p></div>
+    <div class="person"><h3>Prof. Denis Drieghe</h3><p>Supervisor e pesquisador · University of Southampton</p></div>
+    <div class="person"><h3>Prof. Elisângela Teixeira</h3><p>Pesquisadora · Universidade Federal do Ceará</p></div>
+    <div class="person"><h3>Leverhulme Trust</h3><p>Este projeto é financiado pelo Leverhulme Trust</p></div>
+  </div>
+</div>
+</section>
+
+<section id="contato" style="background:var(--sand)">
+<div class="container contact">
+  <div>
+    <div class="section-head"><h2>Fale conosco</h2><p>Gostaria de participar da pesquisa, divulgar o estudo ou saber mais sobre o projeto?</p></div>
+    <p><strong>João Vieira:</strong></p>
+    <p><strong>E-mail:</strong> jmv1a24@soton.ac.uk</p>
+    <div class="buttons"><a class="btn btn-primary" href="mailto:jmv1a24@soton.ac.uk">Entrar em contato</a></div>
+
+  </div>
+  <form onsubmit="event.preventDefault(); alert('Formulário de demonstração — conecte-o a um serviço aprovado pela universidade antes da publicação.');">
+    <label>Nome</label><input type="text" placeholder="Seu nome">
+    <label>E-mail</label><input type="email" placeholder="seu@email.com">
+    <label>Mensagem</label><textarea placeholder="Como podemos ajudar?"></textarea>
+    <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+  </form>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+  <strong>Os impactos da alfabetização tardia</strong><br>
+  University of Southampton · Universidade Federal do Ceará · Leverhulme Trust. Este projeto foi aprovado pelos comitês de ética da University of Southampton (ERGO 111774) e da Universidade Federal do Ceará.
+</div>
+</footer>
+</body>
+</html>
